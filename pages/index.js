@@ -9,9 +9,11 @@ import { ProductCard } from '../components/ProductCard';
 
 
 const HomePage = ({ products }) => {
+
 	const columns = [
 		{ field: 'id', headerName: 'id', width: 80 },
-		{ field: 'nome', headerName: 'Nome', width: 120 },
+		{ field: 'nome', headerName: 'Nome', width: 120, renderCell: (params) =>
+            (<Link href={`/products/${params.row.id}`}><u><b>{params.row.nome}</b></u></Link>) },
 		{ field: 'preco', headerName: 'Preço', width: 80 },
 		{ field: 'descricao', headerName: 'Descrição', width: 160 }
 	];
