@@ -1,8 +1,11 @@
 import axios from "axios";
-import Link from "next/link";
+import Link from 'next/link';
+import { useState, useEffect } from "react";
 import { DataGrid } from '@mui/x-data-grid';
-import { Layout } from "../components/Layout";
-import { ProductCard } from "../components/ProductCard";
+import { Button, Dialog } from '@mui/material';
+import { Layout } from '../components/Layout';
+import { ProductForm } from '../components/ProductForm';
+import { ProductCard } from '../components/ProductCard';
 
 
 const HomePage = ({ products }) => {
@@ -13,8 +16,19 @@ const HomePage = ({ products }) => {
 		{ field: 'descricao', headerName: 'Descrição', width: 160 }
 	];
 
+	const [open, setOpen] = useState(false);
+
+	const toggle = () => {
+        setOpen(current => !current);
+	};
+
 	return (
 		<Layout>
+            <Button variant="outlined" onClick={toggle}>Open form dialog</Button>
+            <Dialog open={open} onClose={toggle} >
+                <ProductForm dialogRef={{ open, setOpen }} />
+			</Dialog>
+
 			<DataGrid columns={columns} rows={products} pageSize={5} rowsPerPageOptions={[5]} checkboxSelection />
 
 			<div className="grid gap-4 grid-cols-1 md:grid-cols-3"> {

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
 
-export const ProductForm = () => {
+export const ProductForm = ({dialogRef}) => {
 	const [product, setProduct] = useState({
 		nome: "",
 		preco: "",
@@ -51,6 +51,7 @@ export const ProductForm = () => {
 		}
 
 		router.push("/");
+		dialogRef.setOpen(false);
 	};
 
 	const onChange = (e) => {
@@ -72,7 +73,9 @@ export const ProductForm = () => {
 	}, []);
 
 	return (
-		<div className="w-full max-w-xs">
+		<div>
+			<Toaster />
+
 			<form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
 				<div className="mb-4">
 					<label htmlFor="nome" className="block text-gray-700 text-sm font-bold md-2">
@@ -124,7 +127,6 @@ export const ProductForm = () => {
 					{router.query.id ? "Actualizar producto" : "Agregar producto"}
 				</button>
 			</form>
-			<Toaster />
 		</div>
 	);
 };
