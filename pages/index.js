@@ -24,7 +24,7 @@ const HomePage = ({ products }) => {
 
 	return (
 		<Layout>
-            <Button variant="outlined" onClick={toggle}>Open form dialog</Button>
+            <Button variant="outlined" onClick={toggle}>Novo Produto</Button>
             <Dialog open={open} onClose={toggle} >
                 <ProductForm dialogRef={{ open, setOpen }} />
 			</Dialog>
