@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useState, useEffect } from "react";
 import { DataGrid } from '@mui/x-data-grid';
 import { Button, Dialog } from '@mui/material';
+import { DeleteIcon } from '@mui/icons-material/Delete';
 import { Layout } from '../components/Layout';
 import { ProductForm } from '../components/ProductForm';
 import { ProductCard } from '../components/ProductCard';
@@ -27,6 +28,7 @@ const HomePage = ({ products }) => {
 	return (
 		<Layout>
             <Button variant="outlined" onClick={toggle}>Novo Produto</Button>
+			<Button variant="contained" startIcon={<DeleteIcon />}>Excluir</Button>
             <Dialog open={open} onClose={toggle} >
                 <ProductForm dialogRef={{ open, setOpen }} />
 			</Dialog>
