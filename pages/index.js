@@ -1,42 +1,14 @@
 import axios from "axios";
 import Link from 'next/link';
-import { useState, useEffect } from "react";
-import { DataGrid } from '@mui/x-data-grid';
-import { Button, Dialog } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete';
-import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { Layout } from '../components/Layout';
-import { ProductForm } from '../components/ProductForm';
 import { ProductCard } from '../components/ProductCard';
-import { ClickableField } from "../components/ClickableField";
+import { ProductList } from "../components/ProductList";
 
 
 const HomePage = ({ products }) => {
-
-	const [open, setOpen] = useState(false);
-
-	const toggle = () => {
-        setOpen(current => !current);
-	};
-
-	const columns = [
-		{ field: 'id', headerName: 'id', width: 80 },
-		{ field: 'nome', headerName: 'Nome', width: 120, renderCell: (params) =>
-            <ClickableField apiRoute={`/?id=${params.row.id}`} label={params.row.nome} dialogRef={{ open, setOpen }}></ClickableField> },
-		{ field: 'preco', headerName: 'Preço', width: 80 },
-		{ field: 'descricao', headerName: 'Descrição', width: 160 }
-	];
-
 	return (
 		<Layout>
-			<Button variant="outlined" startIcon={<DeleteIcon />}>Excluir</Button>
-			<Button variant="outlined" startIcon={<AddCircleIcon />} onClick={toggle} >Novo</Button>
-
-            <Dialog open={open} onClose={toggle} >
-                <ProductForm dialogRef={{ open, setOpen }} />
-			</Dialog>
-
-			<DataGrid columns={columns} rows={products} pageSize={5} rowsPerPageOptions={[5]} checkboxSelection />
+			<ProductList products={products}></ProductList>
 
 			<div className="grid gap-4 grid-cols-1 md:grid-cols-3"> {
 				products.map( (product) => 
