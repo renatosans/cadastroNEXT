@@ -8,23 +8,24 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { Layout } from '../components/Layout';
 import { ProductForm } from '../components/ProductForm';
 import { ProductCard } from '../components/ProductCard';
+import { ClickableField } from "../components/ClickableField";
 
 
 const HomePage = ({ products }) => {
-
-	const columns = [
-		{ field: 'id', headerName: 'id', width: 80 },
-		{ field: 'nome', headerName: 'Nome', width: 120, renderCell: (params) =>
-            (<Link href={`/products/${params.row.id}`}><u><b>{params.row.nome}</b></u></Link>) },
-		{ field: 'preco', headerName: 'Preço', width: 80 },
-		{ field: 'descricao', headerName: 'Descrição', width: 160 }
-	];
 
 	const [open, setOpen] = useState(false);
 
 	const toggle = () => {
         setOpen(current => !current);
 	};
+
+	const columns = [
+		{ field: 'id', headerName: 'id', width: 80 },
+		{ field: 'nome', headerName: 'Nome', width: 120, renderCell: (params) =>
+            <ClickableField apiRoute={`/?id=${params.row.id}`} label={params.row.nome} dialogRef={{ open, setOpen }}></ClickableField> },
+		{ field: 'preco', headerName: 'Preço', width: 80 },
+		{ field: 'descricao', headerName: 'Descrição', width: 160 }
+	];
 
 	return (
 		<Layout>
