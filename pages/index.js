@@ -3,7 +3,8 @@ import Link from 'next/link';
 import { useState, useEffect } from "react";
 import { DataGrid } from '@mui/x-data-grid';
 import { Button, Dialog } from '@mui/material';
-import { DeleteIcon } from '@mui/icons-material/Delete';
+import DeleteIcon from '@mui/icons-material/Delete';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { Layout } from '../components/Layout';
 import { ProductForm } from '../components/ProductForm';
 import { ProductCard } from '../components/ProductCard';
@@ -27,8 +28,9 @@ const HomePage = ({ products }) => {
 
 	return (
 		<Layout>
-            <Button variant="outlined" onClick={toggle}>Novo Produto</Button>
-			<Button variant="contained" startIcon={<DeleteIcon />}>Excluir</Button>
+			<Button variant="outlined" startIcon={<DeleteIcon />}>Excluir</Button>
+			<Button variant="outlined" startIcon={<AddCircleIcon />} onClick={toggle} >Novo</Button>
+
             <Dialog open={open} onClose={toggle} >
                 <ProductForm dialogRef={{ open, setOpen }} />
 			</Dialog>
