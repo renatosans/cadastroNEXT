@@ -35,8 +35,10 @@ export const ProductList = ({ products }) => {
             return;
 		}
 
-		selectionModel.map((id) => { axios.delete(`/api/products/${id}`) } );
-		router.push("/");
+		const promises = selectionModel.map(async (id) => { await axios.delete(`/api/products/${id}`) } );
+		Promise.all(promises)
+		    .then(() => {router.push("/");} )
+			.catch((error) => { toast.error(error.message) })
 	};
 
 	return (
