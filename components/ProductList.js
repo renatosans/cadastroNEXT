@@ -16,7 +16,7 @@ export const ProductList = ({ products }) => {
     const columns = [
 		{ field: 'id', headerName: 'id', width: 80 },
 		{ field: 'nome', headerName: 'Nome', width: 120, renderCell: (params) =>
-            <ClickableField apiRoute={`/?id=${params.row.id}`} label={params.row.nome} dialogRef={{ open, setOpen }}></ClickableField> },
+            <ClickableField route={`/?id=${params.row.id}`} label={params.row.nome} dialogRef={{ open, setOpen }}></ClickableField> },
 		{ field: 'preco', headerName: 'Preço', width: 80 },
 		{ field: 'descricao', headerName: 'Descrição', width: 160 }
 	];
