@@ -4,18 +4,13 @@ import { useRouter } from "next/router";
 export const ClickableField = ({ route, label, dialogRef }) => {
 	const router = useRouter();
 
-	const handleClick = () => {
-		router.push(route, undefined, { shallow: true });
-        dialogRef.setOpen(true);
+	const handleClick = async () => {
+		router.push(route, undefined, { shallow: true })
+		    .then(() => { dialogRef.setOpen(true) } )
+			.catch((error) => { throw new Error('Erro ao definir rota') } );
 	}
 
 	return (
-		<button onClick={handleClick} style={{
-				background: 'none',
-				border: 'none',
-				color: 'darkblue',
-				cursor: 'pointer',
-			}} ><u><b>{label}</b></u>
-		</button>
+		<button onClick={handleClick} style={{ color: 'darkblue'}} ><b><u>{label}</u></b></button>
 	);
 };
