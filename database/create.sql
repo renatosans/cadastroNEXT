@@ -17,11 +17,11 @@ CREATE TABLE IF NOT EXISTS produto (
 -- -----------------------------------------------------
 START TRANSACTION;
 
-INSERT INTO produto (`id`, `nome`, `preco`, `descricao`, `foto`, `formatoImagem`) VALUES (1, 'Mesa Jantar', 1200.00, 'Mesa de jantar 4 lugares', '/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJ....', 'image/gif;base64');
-INSERT INTO produto (`id`, `nome`, `preco`, `descricao`, `foto`, `formatoImagem`) VALUES (2, 'Cadeira', 'Cadeira de madeira', 134.00, '/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAK....', 'image/gif;base64');
-INSERT INTO produto (`id`, `nome`, `preco`, `descricao`, `foto`, `formatoImagem`) VALUES (3, 'Poltrona', 'Poltrona reclinável', 930.00, '/9j/2wBDAAYEBQYFBAYGBQYHBwYIC....', 'image/gif;base64');
-INSERT INTO produto (`id`, `nome`, `preco`, `descricao`, `foto`, `formatoImagem`) VALUES (4, 'Luminária', 'Luminária de mesa', 75.00, 'iVBORw0KGgoAAAANSUhEUgAAALQAAADyCAIAAAB....', 'image/gif;base64');
-INSERT INTO produto (`id`, `nome`, `preco`, `descricao`, `foto`, `formatoImagem`) VALUES (5, 'Ventilador', 'Ventilador de teto', 399.00, 'iVBORw0KGgoAAAANSUhEUgAAALQAA....', 'image/gif;base64');
-INSERT INTO produto (`id`, `nome`, `preco`, `descricao`, `foto`, `formatoImagem`) VALUES (6, 'Cesto/Lixeira', 'Cesto para lixo', 68.00, 'iVBORw0KGgoAAAANSUhEUgAAALQAAADyCAIA....', 'image/gif;base64');
+INSERT INTO produto (`id`, `nome`, `preco`, `descricao`, `foto`, `formatoImagem`) VALUES (1, 'Mesa Jantar', 1200, 'Mesa de jantar 4 lugares', '/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJ....', 'image/gif;base64');
+INSERT INTO produto (`id`, `nome`, `preco`, `descricao`, `foto`, `formatoImagem`) VALUES (2, 'Cadeira', 134, 'Cadeira de madeira', '/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAK....', 'image/gif;base64');
+INSERT INTO produto (`id`, `nome`, `preco`, `descricao`, `foto`, `formatoImagem`) VALUES (3, 'Poltrona', 930, 'Poltrona reclinável', '/9j/2wBDAAYEBQYFBAYGBQYHBwYIC....', 'image/gif;base64');
+INSERT INTO produto (`id`, `nome`, `preco`, `descricao`, `foto`, `formatoImagem`) VALUES (4, 'Luminária', 75, 'Luminária de mesa', 'iVBORw0KGgoAAAANSUhEUgAAALQAAADyCAIAAAB....', 'image/gif;base64');
+INSERT INTO produto (`id`, `nome`, `preco`, `descricao`, `foto`, `formatoImagem`) VALUES (5, 'Ventilador', 399, 'Ventilador de teto', 'iVBORw0KGgoAAAANSUhEUgAAALQAA....', 'image/gif;base64');
+INSERT INTO produto (`id`, `nome`, `preco`, `descricao`, `foto`, `formatoImagem`) VALUES (6, 'Cesto/Lixeira', 68, 'Cesto para lixo', 'iVBORw0KGgoAAAANSUhEUgAAALQAAADyCAIA....', 'image/gif;base64');
 
 COMMIT;
