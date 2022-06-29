@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 export const ClickableField = ({ route, label, dialogRef }) => {
 	const router = useRouter();
 
-	const handleClick = async () => {
+	const handleClick = () => {
 		router.push(route, undefined, { shallow: true })
 		    .then(() => { dialogRef.setOpen(true) } )
 			.catch((error) => { throw new Error('Erro ao definir rota' + error.message) } );
