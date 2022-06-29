@@ -25,8 +25,14 @@ export const ProductList = ({ products }) => {
 
 	const handleInsert = () => {
 		// chamado apenas ao criar um novo produto,  o update passa por outro lugar
+		router.push("/")
+		    .then(() => { dialogRef.setOpen(true) } )
+			.catch((error) => { toast.error(error.message) } );
+	}
+
+    const toggle = () => {
         setOpen(current => !current);
-	};
+    }
 
 	const [selectionModel, setSelectionModel] = useState([]);
 
@@ -38,7 +44,7 @@ export const ProductList = ({ products }) => {
 
 		const promises = selectionModel.map(async (id) => { await axios.delete(`/api/products/${id}`) } );
 		Promise.all(promises)
-		    .then(() => {router.push("/");} )
+		    .then(() => { router.push("/") } )
 			.catch((error) => { toast.error(error.message) })
 	};
 
@@ -46,7 +52,7 @@ export const ProductList = ({ products }) => {
 		<>
             <Toaster />
 
-            <Dialog open={open} onClose={handleEdit} >
+            <Dialog open={open} onClose={toggle} >
                 <ProductForm dialogRef={{ open, setOpen }} />
 			</Dialog>
 
