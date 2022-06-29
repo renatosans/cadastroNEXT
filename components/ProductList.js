@@ -31,6 +31,8 @@ export const ProductList = ({ products }) => {
 	}
 
     const toggle = () => {
+		// limpa a seleção e muda o estado do dialogo
+		setSelectionModel([]);
         setOpen(current => !current);
     }
 
