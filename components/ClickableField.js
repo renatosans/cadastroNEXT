@@ -7,7 +7,7 @@ export const ClickableField = ({ route, label, dialogRef }) => {
 	const handleClick = async () => {
 		router.push(route, undefined, { shallow: true })
 		    .then(() => { dialogRef.setOpen(true) } )
-			.catch((error) => { throw new Error('Erro ao definir rota') } );
+			.catch((error) => { throw new Error('Erro ao definir rota' + error.message) } );
 	}
 
 	return (

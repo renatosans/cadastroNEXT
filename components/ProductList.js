@@ -23,7 +23,8 @@ export const ProductList = ({ products }) => {
 
 	const [open, setOpen] = useState(false);
 
-	const handleEdit = () => {
+	const handleInsert = () => {
+		// chamado apenas ao criar um novo produto,  o update passa por outro lugar
         setOpen(current => !current);
 	};
 
@@ -50,7 +51,7 @@ export const ProductList = ({ products }) => {
 			</Dialog>
 
 			<Button variant="outlined" startIcon={<DeleteIcon />} onClick={handleDelete} >Excluir</Button>
-			<Button variant="outlined" startIcon={<AddCircleIcon />} onClick={handleEdit} >Novo</Button>
+			<Button variant="outlined" startIcon={<AddCircleIcon />} onClick={handleInsert} >Novo</Button>
 
 			<DataGrid columns={columns} rows={products} pageSize={5} rowsPerPageOptions={[5]} checkboxSelection
                 onSelectionModelChange={setSelectionModel} selectionModel={selectionModel} />
