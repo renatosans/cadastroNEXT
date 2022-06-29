@@ -30,11 +30,10 @@ export const ProductList = ({ products }) => {
 			.catch((error) => { toast.error(error.message) } );
 	}
 
-    const toggle = (message) => {
+    const toggle = () => {
 		// limpa a seleção e muda o estado do dialogo
 		setSelectionModel([]);
         setOpen(current => !current);
-		toast.success(message);
     }
 
 	const [selectionModel, setSelectionModel] = useState([]);

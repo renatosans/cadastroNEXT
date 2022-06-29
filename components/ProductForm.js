@@ -51,7 +51,8 @@ export const ProductForm = ({dialogRef}) => {
 		}
 
 		router.push("/");
-		dialogRef.toggle('Registro armazenado com sucesso');
+		toast.success('Produto salvo com sucesso');
+		dialogRef.toggle();
 	};
 
 	const onChange = (e) => {
