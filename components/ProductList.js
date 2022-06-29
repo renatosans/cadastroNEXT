@@ -26,7 +26,7 @@ export const ProductList = ({ products }) => {
 	const handleInsert = () => {
 		// chamado apenas ao criar um novo produto,  o update passa por outro lugar
 		router.push("/")
-		    .then(() => { dialogRef.setOpen(true) } )
+		    .then(() => { setOpen(true) } )
 			.catch((error) => { toast.error(error.message) } );
 	}
 
