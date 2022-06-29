@@ -30,10 +30,11 @@ export const ProductList = ({ products }) => {
 			.catch((error) => { toast.error(error.message) } );
 	}
 
-    const toggle = () => {
+    const toggle = (message) => {
 		// limpa a seleção e muda o estado do dialogo
 		setSelectionModel([]);
         setOpen(current => !current);
+		toast.success(message);
     }
 
 	const [selectionModel, setSelectionModel] = useState([]);
@@ -55,7 +56,7 @@ export const ProductList = ({ products }) => {
             <Toaster />
 
             <Dialog open={open} onClose={toggle} >
-                <ProductForm dialogRef={{ open, setOpen }} />
+                <ProductForm dialogRef={{ toggle }} />
 			</Dialog>
 
 			<Button variant="outlined" startIcon={<DeleteIcon />} onClick={handleDelete} >Excluir</Button>

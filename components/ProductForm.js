@@ -51,7 +51,7 @@ export const ProductForm = ({dialogRef}) => {
 		}
 
 		router.push("/");
-		dialogRef.setOpen(false);
+		dialogRef.toggle('Registro armazenado com sucesso');
 	};
 
 	const onChange = (e) => {
