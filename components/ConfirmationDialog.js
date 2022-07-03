@@ -3,7 +3,7 @@ import { Button } from '@mui/material';
 import { Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
 
 
-export default function ConfirmationDialog({message, handleResult }) {
+export const ConfirmationDialog = ({message, handleResult }) => {
     const [open, setOpen] = useState(true);
 
     const confirm = () => {

@@ -1,5 +1,6 @@
 import axios from "axios";
-import { useState } from "react";
+import ReactDom from 'react-dom';
+import React, { useState } from 'react';
 import { useRouter } from "next/router";
 import { DataGrid } from '@mui/x-data-grid';
 import { Button, Dialog } from '@mui/material';
@@ -8,6 +9,7 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import toast, { Toaster } from "react-hot-toast";
 import { ProductForm } from '../components/ProductForm';
 import { ClickableField } from "../components/ClickableField";
+import { ConfirmationDialog } from '../components/ConfirmationDialog';
 
 
 export const ProductList = ({ products }) => {
@@ -39,24 +41,32 @@ export const ProductList = ({ products }) => {
 	const [selectionModel, setSelectionModel] = useState([]);
 
 	function deleteProd() {
+		const root = ReactDom.createRoot(document.getElementById('container'));
+
 		if (selectionModel.length < 1){
             toast.error("Favor selecionar os registros para exclusão.");
             return;
 		}
 
-		const promises = selectionModel.map(async (id) => { await axios.delete(`/api/products/${id}`) } );
-		Promise.all(promises)
-		    .then(() => { router.push("/") } )
-			.catch((error) => { toast.error(error.message) })
-	};
+		const message = 'Deseja realmente excluir os produtos selecionados ?';
+        const confirmationDialog = React.createElement(ConfirmationDialog, {message, handleResult}, null);
+		root.render(confirmationDialog);
+	}
 
-	const handleResult = () => {
-		// apos confirmação exlcui os registros
+	const handleResult = (result) => {
+        // apos confirmação exlcui os registros
+		if (result) {
+			const promises = selectionModel.map(async (id) => { await axios.delete(`/api/products/${id}`) } );
+			Promise.all(promises)
+				.then(() => { router.push("/") } )
+				.catch((error) => { toast.error(error.message) })	
+		}		
 	}
 
 	return (
 		<>
             <Toaster />
+			<div id="container"></div>
 
             <Dialog open={open} onClose={toggle} >
                 <ProductForm dialogRef={{ toggle }} />
