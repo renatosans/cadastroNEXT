@@ -23,7 +23,7 @@ export const ProductList = ({ products }) => {
 
 	const [open, setOpen] = useState(false);
 
-	const handleInsert = () => {
+	function insertProd() {
 		// chamado apenas ao criar um novo produto,  o update passa por outro lugar
 		router.push("/")
 		    .then(() => { setOpen(true) } )
@@ -38,7 +38,7 @@ export const ProductList = ({ products }) => {
 
 	const [selectionModel, setSelectionModel] = useState([]);
 
-	const handleDelete = () => {
+	function deleteProd() {
 		if (selectionModel.length < 1){
             toast.error("Favor selecionar os registros para exclusão.");
             return;
@@ -50,6 +50,10 @@ export const ProductList = ({ products }) => {
 			.catch((error) => { toast.error(error.message) })
 	};
 
+	const handleResult = () => {
+		// apos confirmação exlcui os registros
+	}
+
 	return (
 		<>
             <Toaster />
@@ -58,8 +62,8 @@ export const ProductList = ({ products }) => {
                 <ProductForm dialogRef={{ toggle }} />
 			</Dialog>
 
-			<Button variant="outlined" startIcon={<DeleteIcon />} onClick={handleDelete} >Excluir</Button>
-			<Button variant="outlined" startIcon={<AddCircleIcon />} onClick={handleInsert} >Novo</Button>
+			<Button variant="outlined" startIcon={<DeleteIcon />} onClick={deleteProd} >Excluir</Button>
+			<Button variant="outlined" startIcon={<AddCircleIcon />} onClick={insertProd} >Novo</Button>
 
 			<DataGrid columns={columns} rows={products} pageSize={5} rowsPerPageOptions={[5]} checkboxSelection
                 onSelectionModelChange={setSelectionModel} selectionModel={selectionModel} />
