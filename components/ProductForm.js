@@ -2,35 +2,24 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { notification } from "../config/notification";
 
 
 export const ProductForm = ({dialogRef}) => {
+	const router = useRouter();
+
 	const [product, setProduct] = useState({
 		nome: "",
 		preco: "",
 		descricao: "",
 		foto: "",
-	});
-
-	const router = useRouter();
-
-	const notify = (message) => {
-		toast.error(message, {
-			position: "bottom-right",
-			autoClose: 5000,
-			hideProgressBar: false,
-			closeOnClick: true,
-			pauseOnHover: true,
-			draggable: true,
-			progress: undefined,
-		});
-	};
+	})
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
 		if (product.nome === "" || product.preco === "" || product.descricao === "") {
-			notify("Favor preencher todos os campos!");
+			toast.error('Favor preencher todos os campos!', notification.options);
 			return;
 		}
 
@@ -45,13 +34,12 @@ export const ProductForm = ({dialogRef}) => {
 				});
 			}
 		} catch (error) {
-			notify(error.message);
-
+			toast.error(error.message, notification.options);
 			return;
 		}
 
 		router.push("/");
-		toast.success('Produto salvo com sucesso');
+		toast.success('Produto salvo com sucesso', notification.options);
 		dialogRef.toggle();
 	};
 
