@@ -7,6 +7,7 @@ import { Button, Dialog } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import toast, { Toaster } from "react-hot-toast";
+import { notification } from "../config/notification";
 import { ProductForm } from '../components/ProductForm';
 import { ClickableField } from "../components/ClickableField";
 import { ConfirmationDialog } from '../components/ConfirmationDialog';
@@ -44,7 +45,7 @@ export const ProductList = ({ products }) => {
 		const root = ReactDom.createRoot(document.getElementById('container'));
 
 		if (selectionModel.length < 1){
-            toast.error("Favor selecionar os produtos para exclusão.");
+            toast.error("Favor selecionar os produtos para exclusão.", notification.options);
             return;
 		}
 
