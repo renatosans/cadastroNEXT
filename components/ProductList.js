@@ -44,7 +44,7 @@ export const ProductList = ({ products }) => {
 		const root = ReactDom.createRoot(document.getElementById('container'));
 
 		if (selectionModel.length < 1){
-            toast.error("Favor selecionar os registros para exclusão.");
+            toast.error("Favor selecionar os produtos para exclusão.");
             return;
 		}
 
