@@ -1,7 +1,7 @@
 import axios from "axios";
 import Link from 'next/link';
 import { Layout } from '../components/Layout';
-import { ProductCard } from '../components/ProductCard';
+import ProductCard from '../components/ProductCard';
 import { ProductList } from "../components/ProductList";
 
 
@@ -13,7 +13,7 @@ const HomePage = ({ products }) => {
 			<div className="grid gap-4 grid-cols-1 md:grid-cols-3"> {
 				products.map( (product) => 
 					<Link href={`products/${product.id}`} key={product.id}>
-						<ProductCard product={product} />
+						<ProductCard produto={product} />
 					</Link>
 				)
 			} </div>
