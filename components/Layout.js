@@ -1,4 +1,6 @@
 import { Navbar } from "./Navbar";
+
+
 export const Layout = ({ children }) => {
 	return (
 		<>
@@ -8,5 +10,5 @@ export const Layout = ({ children }) => {
 				<div className="container mx-auto w-3/5 h-1/2 my-10">{children}</div>
 			</div>
 		</>
-	);
-};
+	)
+}

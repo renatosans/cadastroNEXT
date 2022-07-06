@@ -1,7 +1,7 @@
 import axios from "axios";
 import Link from 'next/link';
 import { Layout } from '../components/Layout';
-import ProductCard from '../components/ProductCard';
+import { ProductCard } from '../components/ProductCard';
 import { ProductList } from "../components/ProductList";
 
 

@@ -8,7 +8,7 @@ export const Navbar = () => {
 				<Link href="/">
 					<a className="flex">
 						<svg
-							class="w-8 h-8 mr-2 mt-1 dark:text-white"
+							className="w-8 h-8 mr-2 mt-1 dark:text-white"
 							fill="none"
 							stroke="currentColor"
 							viewBox="0 0 24 24"
