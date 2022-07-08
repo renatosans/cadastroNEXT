@@ -13,11 +13,6 @@ const HomePage = () => {
 		const response = await fetch('api/products')
 		.then((response) => response.json());
 
-//		if(!response.ok) {
-//			toast.error(response.message);
-//			return;
-//		}
-
 		setProdutos(response);
 	}
 
