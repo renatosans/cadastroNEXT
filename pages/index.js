@@ -18,8 +18,8 @@ const HomePage = ({ products }) => {
 				)
 			} </div>
 		</Layout>
-	);
-};
+	)
+}
 
 export const getServerSideProps = async (context) => {
 	const { data: products } = await axios.get("http://localhost:3000/api/products");
@@ -28,7 +28,7 @@ export const getServerSideProps = async (context) => {
 		props: {
 			products,
 		},
-	};
-};
+	}
+}
 
-export default HomePage;
+export default HomePage
