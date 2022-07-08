@@ -60,7 +60,7 @@ export const ProductList = ({ products }) => {
 			const promises = selectionModel.map(async (id) => { await axios.delete(`/api/products/${id}`) } );
 			Promise.all(promises)
 				.then(() => { router.push("/") } )
-				.catch((error) => { toast.error(error.message) })	
+				.catch((error) => { toast.error(error.message) })
 		}		
 	}
 
