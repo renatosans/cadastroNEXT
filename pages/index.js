@@ -21,6 +21,7 @@ const HomePage = ({ products }) => {
 	)
 }
 
+
 export const getServerSideProps = async (context) => {
 	const route = 'http://' + context.req.headers.host + '/api/products';
 	const { data: products } = await axios.get(route);
