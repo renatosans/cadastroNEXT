@@ -1,32 +1,17 @@
+import axios from 'axios';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
-import toast, { Toaster } from "react-hot-toast";
 import { Layout } from '../components/Layout';
 import { ProductCard } from '../components/ProductCard';
 import { ProductList } from '../components/ProductList';
 
 
-const HomePage = () => {
-	const [produtos, setProdutos] = useState([]);
-
-	const getProdutos = async () => {
-		const response = await fetch('api/products')
-		.then((response) => response.json());
-
-		setProdutos(response);
-	}
-
-	useEffect(() => {
-		getProdutos();
-	}, []);
-
+const HomePage = ({ products }) => {
 	return (
 		<Layout>
-			<Toaster />
-			<ProductList products={produtos}></ProductList>
+			<ProductList products={products}></ProductList>
 
 			<div className="grid gap-4 grid-cols-1 md:grid-cols-3"> {
-				produtos && produtos.map( (product) => 
+				products.map( (product) => 
 					<Link href={`products/${product.id}`} key={product.id}>
 						<ProductCard produto={product} />
 					</Link>
@@ -34,6 +19,17 @@ const HomePage = () => {
 			} </div>
 		</Layout>
 	)
+}
+
+export const getServerSideProps = async (context) => {
+	const route = 'http://' + context.req.headers.host + '/api/products';
+	const { data: products } = await axios.get(route);
+
+	return {
+		props: {
+			products,
+		},
+	}
 }
 
 export default HomePage
