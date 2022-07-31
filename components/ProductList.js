@@ -7,7 +7,7 @@ import { Button, Dialog } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import toast, { Toaster } from "react-hot-toast";
-import { notification } from "../config/notification";
+import { api, notification } from "../config/notification";
 import { ProductForm } from '../components/ProductForm';
 import { ClickableField } from "../components/ClickableField";
 import { ConfirmationDialog } from '../components/ConfirmationDialog';
