@@ -93,23 +93,23 @@ export const ProductForm = ({dialogRef}) => {
 					<label htmlFor="descricao" className="block text-gray-700 text-sm font-bold md-2">
 						Descrição
 					</label>
-					<textarea
+					<input type="text"
 						name="descricao"
 						value={product.descricao}
 						className="shadow appearance  border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-						onChange={onChange} >
-					</textarea>
+						onChange={onChange}
+					/>
 				</div>
 				<div className="mb-4">
 					<label htmlFor="foto" className="block text-gray-700 text-sm font-bold md-2">
 						Foto
 					</label>
-					<input type="text"						
+					<textarea  
 						name="foto"
 						value={product.foto}
 						className="shadow appearance  border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-						onChange={onChange}
-					/>
+						onChange={onChange} >
+				    </textarea>
 				</div>
 				<button type="submit" className="bg-blue-500 hover:bg-blue-700 py-2 px-4 rounded focus:outline-none focus:shadow-outline text-white font-bold">
 					Salvar
