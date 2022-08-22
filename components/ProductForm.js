@@ -104,12 +104,15 @@ export const ProductForm = ({dialogRef}) => {
 					<label htmlFor="foto" className="block text-gray-700 text-sm font-bold md-2">
 						Foto
 					</label>
-					<textarea  
-						name="foto"
-						value={product.foto}
-						className="shadow appearance  border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-						onChange={onChange} >
-				    </textarea>
+					<div className="bg-gray-400 flex flex-row">
+						<textarea
+							name="foto"
+							value={product.foto}
+							className="resize-x border rounded text-gray-700"
+							onChange={onChange} >
+						</textarea>
+						<img className="w-48" src={"data:" + product.formatoImagem + ", " + product.foto} alt={product.nome}></img>
+					</div>
 				</div>
 				<button type="submit" className="bg-blue-500 hover:bg-blue-700 py-2 px-4 rounded focus:outline-none focus:shadow-outline text-white font-bold">
 					Salvar
