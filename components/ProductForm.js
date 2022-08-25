@@ -108,7 +108,7 @@ export const ProductForm = ({dialogRef}) => {
 						<textarea
 							name="foto"
 							value={product.foto}
-							className="resize-x border rounded text-gray-700"
+							className="min-w-fit resize-x border rounded text-gray-700"
 							onChange={onChange} >
 						</textarea>
 						<img className="w-48" src={"data:" + product.formatoImagem + ", " + product.foto} alt={product.nome}></img>
