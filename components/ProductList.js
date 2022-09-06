@@ -2,6 +2,7 @@ import axios from "axios";
 import ReactDom from 'react-dom';
 import React, { useState } from 'react';
 import { useRouter } from "next/router";
+import Draggable from 'react-draggable';
 import { DataGrid } from '@mui/x-data-grid';
 import { Button, Dialog } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -69,9 +70,11 @@ export const ProductList = ({ products }) => {
             <Toaster />
 			<div id="container"></div>
 
-            <Dialog open={open} onClose={toggle} >
-                <ProductForm dialogRef={{ toggle }} />
-			</Dialog>
+			<Draggable>  // TODO:  Next Life:  Fix unmonted during event
+				<Dialog open={open} onClose={toggle} BackdropProps={{ style: { backgroundColor: "transparent" } }} >
+					<ProductForm dialogRef={{ toggle }} />
+				</Dialog>
+			</Draggable>
 
 			<Button variant="outlined" startIcon={<DeleteIcon />} onClick={deleteProd} >Excluir</Button>
 			<Button variant="outlined" startIcon={<AddCircleIcon />} onClick={insertProd} >Novo</Button>
