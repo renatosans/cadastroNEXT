@@ -10,7 +10,7 @@ export const ProductForm = ({dialogRef}) => {
 
 	const [product, setProduct] = useState({
 		nome: "",
-		preco: "",
+		preco: "",   // Bug found while saving product (Value exceeds valid range of column)
 		descricao: "",
 		foto: "",
 	})
