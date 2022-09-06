@@ -2,7 +2,7 @@ import axios from "axios";
 import ReactDom from 'react-dom';
 import React, { useState } from 'react';
 import { useRouter } from "next/router";
-import Draggable from 'react-draggable';
+import Draggable from 'react-draggable'; // Bug found while dragging form ( Unmonted during event )
 import { DataGrid } from '@mui/x-data-grid';
 import { Button, Dialog } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -70,7 +70,7 @@ export const ProductList = ({ products }) => {
             <Toaster />
 			<div id="container"></div>
 
-			<Draggable>  // TODO:  Next Life:  Fix unmonted during event
+			<Draggable>
 				<Dialog open={open} onClose={toggle} BackdropProps={{ style: { backgroundColor: "transparent" } }} >
 					<ProductForm dialogRef={{ toggle }} />
 				</Dialog>
