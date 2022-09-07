@@ -35,14 +35,15 @@ const deleteProduct = async (req, res) => {
 
 const updateProduct = async (req, res) => {
 	const { id } = req.query;
-	const { nome, preco, descricao, foto } = req.body;
+	const { nome, preco, descricao, foto, formatoImagem } = req.body;
 
 	try {
-		await pool.query("UPDATE produto SET nome = ?, preco = ?, descricao = ?, foto = ?  WHERE id = ?", [
+		await pool.query("UPDATE produto SET nome = ?, preco = ?, descricao = ?, foto = ?, formatoImagem = ?  WHERE id = ?", [
 			nome,
 			preco,
 			descricao,
 			foto,
+			formatoImagem,
 			id,
 		]);
 		res.status(204).json();
