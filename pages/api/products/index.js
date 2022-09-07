@@ -13,10 +13,10 @@ export default async function handler(req, res) {
 }
 
 const saveProduct = async (req, res) => {
-	const { nome, preco, descricao, foto } = req.body;
+	const { nome, preco, descricao, foto, formatoImagem } = req.body;
 
 	try {
-		const [result] = await pool.query("INSERT INTO produto SET ?", { nome, preco, descricao, foto });
+		const [result] = await pool.query("INSERT INTO produto SET ?", { nome, preco, descricao, foto, formatoImagem });
 
 		return res.status(200).json({
 			message: "Product created",
@@ -24,7 +24,8 @@ const saveProduct = async (req, res) => {
 			nome,
 			preco,
 			descricao,
-			foto
+			foto,
+			formatoImagem
 		});
 	} catch (error) {
 		return res.status(500).json({

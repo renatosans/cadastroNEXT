@@ -13,6 +13,7 @@ export const ProductForm = ({dialogRef}) => {
 		preco: "",   // Bug found while saving product (Value exceeds valid range of column)
 		descricao: "",
 		foto: "",
+		formatoImagem: "",
 	})
 
 	const handleSubmit = async (e) => {
@@ -44,10 +45,19 @@ export const ProductForm = ({dialogRef}) => {
 	};
 
 	const onChange = (e) => {
-		setProduct({
-			...product,
-			[e.target.name]: e.target.value,
-		});
+		if (e.target.type === 'file') {
+			const file = e.target.files[0];
+			// Reads the file using the FileReader API
+			const reader = new FileReader();
+			reader.onloadend = () => {
+				const fileData = reader.result.split(';base64,');
+				let formato = fileData[0].replace('data:', '') + ';base64'
+				setProduct({...product, 'foto': fileData[1], 'formatoImagem': formato, })
+			}
+			reader.readAsDataURL(file);
+		}
+
+		setProduct({...product, [e.target.name]: e.target.value, })
 	};
 
 	useEffect(() => {
@@ -105,12 +115,7 @@ export const ProductForm = ({dialogRef}) => {
 						Foto
 					</label>
 					<div className="bg-gray-400 flex flex-row">
-						<textarea
-							name="foto"
-							value={product.foto}
-							className="min-w-fit resize-x border rounded text-gray-700"
-							onChange={onChange} >
-						</textarea>
+						<input type="file" name="foto" onChange={onChange} />
 						<img className="w-48" src={"data:" + product.formatoImagem + ", " + product.foto} alt={product.nome}></img>
 					</div>
 				</div>
