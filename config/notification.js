@@ -7,7 +7,7 @@ const api = null;
 'http://' + context.req.headers.host + '/api/products'
 
 const api = axios.create({
-    baseURL: 'https://cadastro-produtos-next.vercel.app/api',
+    baseURL: 'https://cadastro-next.vercel.app/api',
     timeout: 1000,
     headers: { 'Content-Type': 'application/json' }
 })
