@@ -115,7 +115,7 @@ export const ProductForm = ({dialogRef}) => {
 						Foto
 					</label>
 					<div className="bg-gray-400 flex flex-col w-48">
-						<input type="file" name="foto" onChange={onChange} />
+						<input type="file" name="foto" accept=".gif,.jpg,.jpeg,.png" onChange={onChange} />
 						<img className="w-full" src={"data:" + product.formatoImagem + ", " + product.foto} alt={product.nome}></img>
 					</div>
 				</div>

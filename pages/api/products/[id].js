@@ -33,6 +33,7 @@ const deleteProduct = async (req, res) => {
 	}
 };
 
+// TODO -  limitar o upload de arquivo somente aos tipos  .gif, .jpg, .png
 const updateProduct = async (req, res) => {
 	const { id } = req.query;
 	const { nome, preco, descricao, foto, formatoImagem } = req.body;
