@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import Draggable from 'react-draggable'; // Bug found while dragging form ( Unmonted during event )
 // Bug can be reproduced by clicking outside the form and dragging at the same time  (de maneira nervosa)
 // This bug also happens if you click on SAVE and click outside the form at the same time
+// Possible fix :  remove 'react-draggable'
 import { DataGrid } from '@mui/x-data-grid';
 import { Button, Dialog } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
