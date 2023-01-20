@@ -1,12 +1,12 @@
-import { createPool } from "mysql2/promise";
+const { Pool } = require('pg');
 
 
-// dados da conexão com BD serverless
-const pool = createPool({
+// dados da conexão com o BD
+const pool = new Pool({
 	host: 'localhost',
-	user: 'root',
+	user: 'postgres',
 	password: 'p@ssw0rd',
-	port: 3306,
+	port: 5432,
 	database: 'commercedb',
 	// ssl: {}
 })

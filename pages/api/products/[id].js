@@ -17,14 +17,14 @@ export default async function handler(req, res) {
 
 const getProduct = async (req, res) => {
 	const { id } = req.query;
-	const [result] = await pool.query("SELECT * FROM produto WHERE id = ?", [id]);
-	res.status(200).json(result[0]);
+	const result = await pool.query("SELECT * FROM produto WHERE id = $1", [id]);
+	res.status(200).json(result.rows[0]);
 };
 
 const deleteProduct = async (req, res) => {
 	try {
 		const { id } = req.query;
-		await pool.query("DELETE FROM produto WHERE id = ?", [id]);
+		await pool.query("DELETE FROM produto WHERE id = $1", [id]);
 		res.status(204).json();
 	} catch (error) {
 		return res.status(500).json({
@@ -39,7 +39,7 @@ const updateProduct = async (req, res) => {
 	const { nome, preco, descricao, foto, formatoImagem } = req.body;
 
 	try {
-		await pool.query("UPDATE produto SET nome = ?, preco = ?, descricao = ?, foto = ?, formatoImagem = ?  WHERE id = ?", [
+		await pool.query('UPDATE produto SET nome = $1, preco = $2, descricao = $3, foto = $4, "formatoImagem" = $5  WHERE id = $6', [
 			nome,
 			preco,
 			descricao,

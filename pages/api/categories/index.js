@@ -19,9 +19,9 @@ const saveCategory = async (req, res) => {
 
 const getCategories = async (req, res) => {
 	try {
-		const [result] = await pool.query("SELECT * FROM categoria")
+		const result = await pool.query("SELECT * FROM categoria")
 
-		return res.status(200).json(result)
+		return res.status(200).json(result.rows)
 	} catch (error) {
 		return res.status(500).json({
 			message: error.message,

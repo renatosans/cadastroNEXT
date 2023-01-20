@@ -17,7 +17,7 @@ const saveProduct = async (req, res) => {
 	const { nome, preco, descricao, foto, formatoImagem } = req.body;
 
 	try {
-		const [result] = await pool.query("INSERT INTO produto SET ?", { nome, preco, descricao, foto, formatoImagem });
+		const result = await pool.query('INSERT INTO produto(nome, preco, descricao, foto, "formatoImagem") VALUES($1, $2, $3, $4, $5)', [ nome, preco, descricao, foto, formatoImagem ]);
 
 		return res.status(200).json({
 			message: "Product created",
@@ -37,9 +37,9 @@ const saveProduct = async (req, res) => {
 
 const getProducts = async (req, res) => {
 	try {
-		const [result] = await pool.query("SELECT * FROM produto");
+		const result = await pool.query("SELECT * FROM produto");
 
-		return res.status(200).json(result);
+		return res.status(200).json(result.rows);
 	} catch (error) {
 		return res.status(500).json({
 			message: error.message,
