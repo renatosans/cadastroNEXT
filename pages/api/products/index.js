@@ -37,7 +37,7 @@ const saveProduct = async (req, res) => {
 
 const getProducts = async (req, res) => {
 	try {
-		const result = await pool.query("SELECT * FROM produto");
+		const result = await pool.query("SELECT * FROM produto ORDER BY id");
 
 		return res.status(200).json(result.rows);
 	} catch (error) {
