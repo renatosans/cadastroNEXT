@@ -35,7 +35,7 @@ CREATE TABLE public.fornecedor (
 CREATE TABLE public.produto (
 	id serial4 NOT NULL,
 	nome varchar(255) NOT NULL,
-	preco numeric(10, 2) NOT NULL,
+	preco DOUBLE PRECISION NOT NULL,
 	categoria int4 NULL,
 	fornecedor int4 NULL,
 	descricao varchar(255) NULL,
