@@ -5,6 +5,10 @@ import toast, { Toaster } from "react-hot-toast";
 import { notification } from "../config/notification";
 
 
+// TODO: Fix error 413 Request Entity Too Large
+// Split the image into slices using  https://www.npmjs.com/package/image-to-slices
+// Then send the slices to the server using one request for each slice
+
 export const ProductForm = ({dialogRef}) => {
 	const router = useRouter();
 
